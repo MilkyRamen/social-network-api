@@ -22,7 +22,7 @@ async function getAllThoughts(req, res) {
     }
 }
 
-async function getThoughtById(res, res) {
+async function getThoughtById(req, res) {
     const thoughtId = req.params.thoughtId;
 
     try {

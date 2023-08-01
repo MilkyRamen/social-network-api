@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Reaction = require('./Reaction');
 
 const thoughtSchema = new mongoose.Schema({
     thoughtText: {
@@ -7,7 +8,7 @@ const thoughtSchema = new mongoose.Schema({
         minlength: 1,
         maxlength: 280,
     },
-    createdAt: {
+    timestamp: {
         type: Date,
         default: Date.now(),
     },
@@ -15,14 +16,14 @@ const thoughtSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    reactions: [reactionSchema],
+    reactions: [Reaction.schema],
 }, {
     toJSON: { getters: true },
     toObject: { getters: true },
 });
 
 thoughtSchema.path('timestamp').get(function (timestamp) {
-    return timestamp.toLocalString();
+    return timestamp.toLocaleString();
 });
 
 const Thought = mongoose.model('Thought', thoughtSchema);

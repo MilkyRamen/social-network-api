@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
+const { ObjectId } = Schema.Types;
 
 const reactionSchema = new mongoose.Schema({
     reactionId: {
@@ -14,14 +16,14 @@ const reactionSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    createdAt: {
+    timestamp: {
         type: Date,
         default: Date.now(),
     }
 });
 
 reactionSchema.path('timestamp').get(function (timestamp) {
-    return timestamp.toLocalString();
+    return timestamp.toLocaleString();
 });
 
 const Reaction = mongoose.model('Reaction', reactionSchema);

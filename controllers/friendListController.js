@@ -39,6 +39,20 @@ async function removeFriend(req, res) {
     }
 }
 
+async function getFriendList(req, res) {
+    const userId = req.params.userId;
+    try {
+        const user = await User.findById(userId).populate('friends', 'username');
+        if (!user) {
+            return res.status(404).json({ error: 'User not found.' });
+        }
+        res.json(user.friends);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch friends list.' });
+    }
+}
+
 module.exports = {
     addFriend,
     removeFriend,

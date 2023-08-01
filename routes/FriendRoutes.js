@@ -5,7 +5,7 @@ const FriendListController = require('../controllers/friendListController');
 
 router.post('/friends', FriendListController.addFriend);
 
-router.delete('/friends/friendId', FriendListController.removeFriend);
+router.delete('/friends/:friendId', FriendListController.removeFriend);
 
 router.get('/friends/:userId', FriendListController.getFriendList);
 
