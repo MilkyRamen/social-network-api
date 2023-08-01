@@ -7,8 +7,8 @@ const PORT = process.env.PORT || 4444;
 mongoose.connect('mongodb://localhost:27017/social_network', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
+    //useCreateIndex: true,
+    //useFindAndModify: false,
 });
 
 app.use('/api', require('./routes/UserRoutes'));

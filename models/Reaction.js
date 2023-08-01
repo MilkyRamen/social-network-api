@@ -4,8 +4,8 @@ const { ObjectId } = Schema.Types;
 
 const reactionSchema = new mongoose.Schema({
     reactionId: {
-        type: mongoose.Schema.Types.ObjectId,
-        default: new ObjectId,
+        type: mongoose.Types.ObjectId,
+        default: new Schema.Types.ObjectId,
     },
     reactionBody: {
         type: String,
@@ -22,9 +22,6 @@ const reactionSchema = new mongoose.Schema({
     }
 });
 
-reactionSchema.path('timestamp').get(function (timestamp) {
-    return timestamp.toLocaleString();
-});
 
 const Reaction = mongoose.model('Reaction', reactionSchema);
 

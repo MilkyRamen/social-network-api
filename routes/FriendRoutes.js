@@ -7,6 +7,6 @@ router.post('/friends', FriendListController.addFriend);
 
 router.delete('/friends/:friendId', FriendListController.removeFriend);
 
-router.get('/friends/:userId', FriendListController.getFriendList);
+//router.get('/friends/:userId', FriendListController.getFriendList);
 
 module.exports = router;
